@@ -4,10 +4,13 @@ Date: 11/17/2020
 Project: Logic Gate Delayed Neural Network (LGDNN)
 Description: Utilize Logic-Gates to create a network to solve different logic gates.
 
-Neural Architecture: 2 input nodes, 3 hidden layers, 1 output node.
+Neural Architecture: 2 input nodes, 1 hidden layers, 1 output node.
 Output Type: Boolean Output
 Input Type: Boolean Input
 
+Results:
+* Successfully forwardly computes: OR, NOR, XNOR, NAND, XOR. 
+* Fails to fowardly compute: AND
 """
 
 
