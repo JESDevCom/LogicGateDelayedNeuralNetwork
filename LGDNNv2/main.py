@@ -17,8 +17,13 @@ import numpy as np
 import logic
 bool = logic.bool()
 
+# --------------------------- User Vars ------------------------------
+max_delay = 1  # Max Delay
 
+# --------------------------- Inputs ---------------------------------
 input = np.array([[False, False], [False, True], [True, False], [True, True]])
+
+# ----------------------  Output Solutions ---------------------------
 and_table = np.array([False, False, False, True])
 nand_table = np.array([True, True, True, False])
 or_table = np.array([False, True, True, True])
@@ -26,12 +31,12 @@ xor_table = np.array([False, True, True, False])
 xnor_table = np.array([True, False, False, True])
 nor_table = np.array([True, False, False, False])
 
-lim_max = 2
+
 # Generate Random Delays
-d1 = np.random.randint(0, lim_max, size=6)
-d2 = np.random.randint(0, lim_max, size=9)
-d3 = np.random.randint(0, lim_max, size=3)
-d4 = np.random.randint(0, lim_max, size=1)
+d1 = np.random.randint(0, max_delay+1, size=6)
+d2 = np.random.randint(0, max_delay+1, size=9)
+d3 = np.random.randint(0, max_delay+1, size=3)
+d4 = np.random.randint(0, max_delay+1, size=1)
 
 
 
@@ -61,7 +66,7 @@ def forward_prop(input, d1, d2, d3, d4):
     return s3[0]
 
 # Guess for a solution
-def rand_find_solution(input_table, lim_max):
+def rand_find_solution(input_table, max_delay):
 
     # Init Var
     output = np.array([False, False, False, False])
@@ -70,10 +75,10 @@ def rand_find_solution(input_table, lim_max):
     while not(np.array_equal(input_table, output)):
 
         # Generate Random Delays
-        d1 = np.random.randint(0, lim_max, size=6)
-        d2 = np.random.randint(0, lim_max, size=9)
-        d3 = np.random.randint(0, lim_max, size=3)
-        d4 = np.random.randint(0, lim_max, size=1)
+        d1 = np.random.randint(0, max_delay+1, size=6)
+        d2 = np.random.randint(0, max_delay+1, size=9)
+        d3 = np.random.randint(0, max_delay+1, size=3)
+        d4 = np.random.randint(0, max_delay+1, size=1)
 
         for index in range(0, 4):
             output[index] = forward_prop(input[index, :], d1, d2, d3, d4)
@@ -86,19 +91,19 @@ def rand_find_solution(input_table, lim_max):
             print(forward_prop(input[index, :], d1, d2, d3, d4))
 
 
-# Print Results
+# -------------------------- Print Results ----------------------------
 print('XNOR:')
-rand_find_solution(xnor_table, lim_max)
+rand_find_solution(xnor_table, max_delay)
 print('\nNOR')
-rand_find_solution(nor_table, lim_max)
+rand_find_solution(nor_table, max_delay)
 print('\nOR')
-rand_find_solution(or_table, lim_max)
+rand_find_solution(or_table, max_delay)
 print('\nNAND')
-rand_find_solution(nand_table, lim_max)
+rand_find_solution(nand_table, max_delay)
 print('\nXOR')
-rand_find_solution(xor_table, lim_max)
+rand_find_solution(xor_table, max_delay)
 print('\nAND')
-rand_find_solution(and_table, lim_max)
+rand_find_solution(and_table, max_delay)
 
 """
 print(d1, d2, d3, d4)
