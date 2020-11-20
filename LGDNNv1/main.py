@@ -4,13 +4,10 @@ Date: 11/17/2020
 Project: Logic Gate Delayed Neural Network (LGDNN)
 Description: Utilize Logic-Gates to create a network to solve different logic gates.
 
-Neural Architecture: 2 input nodes, 1 hidden layers, 1 output node.
+Neural Architecture: 2 input nodes, 3 hidden layers, 1 output node.
 Output Type: Boolean Output
 Input Type: Boolean Input
 
-Results:
-* Successfully forwardly computes: OR, NOR, XNOR, NAND, XOR. 
-* Fails to fowardly compute: AND
 """
 
 
@@ -18,8 +15,15 @@ import numpy as np
 import logic
 bool = logic.bool()
 
+#np.random.seed(seed=1)
+# --------------------------- User Vars ------------------------------
+max_delay = 1  # Max Delay
 
+# --------------------------- Inputs ---------------------------------
 input = np.array([[False, False], [False, True], [True, False], [True, True]])
+
+# ----------------------  Output Solutions ---------------------------
+# LOGIC GATES - Single Output Node Test
 and_table = np.array([False, False, False, True])
 nand_table = np.array([True, True, True, False])
 or_table = np.array([False, True, True, True])
@@ -27,15 +31,14 @@ xor_table = np.array([False, True, True, False])
 xnor_table = np.array([True, False, False, True])
 nor_table = np.array([True, False, False, False])
 
-lim_max = 7
+
 # Generate Random Delays
-d1 = np.random.randint(0, lim_max, size=6)
-d2 = np.random.randint(0, lim_max, size=3)
-d3 = np.random.randint(0, lim_max, size=1)
+d1 = np.random.randint(0, max_delay+1, size=6)
+d2 = np.random.randint(0, max_delay+1, size=3)
+d3 = np.random.randint(0, max_delay+1, size=1)
 
 
-
-
+# Compute Forward Propagation
 def forward_prop(input, d1, d2, d3):
 
     s0 = input
@@ -55,7 +58,7 @@ def forward_prop(input, d1, d2, d3):
     return s2[0]
 
 # Guess for a solution
-def rand_find_solution(input_table, lim_max):
+def rand_find_solution(input_table, max_delay):
 
     # Init Var
     output = np.array([False, False, False, False])
@@ -64,9 +67,9 @@ def rand_find_solution(input_table, lim_max):
     while not(np.array_equal(input_table, output)):
 
         # Generate Random Delays
-        d1 = np.random.randint(0, lim_max, size=6)
-        d2 = np.random.randint(0, lim_max, size=3)
-        d3 = np.random.randint(0, lim_max, size=1)
+        d1 = np.random.randint(0, max_delay+1, size=6)
+        d2 = np.random.randint(0, max_delay+1, size=3)
+        d3 = np.random.randint(0, max_delay+1, size=1)
 
         for index in range(0, 4):
             output[index] = forward_prop(input[index, :], d1, d2, d3)
@@ -79,19 +82,19 @@ def rand_find_solution(input_table, lim_max):
             print(forward_prop(input[index, :], d1, d2, d3))
 
 
-# Print Results
+# -------------------------- Print Results ----------------------------
 print('XNOR:')
-rand_find_solution(xnor_table, lim_max)
+rand_find_solution(xnor_table, max_delay)
 print('\nNOR')
-rand_find_solution(nor_table, lim_max)
+rand_find_solution(nor_table, max_delay)
 print('\nOR')
-rand_find_solution(or_table, lim_max)
+rand_find_solution(or_table, max_delay)
 print('\nNAND')
-rand_find_solution(nand_table, lim_max)
+rand_find_solution(nand_table, max_delay)
 print('\nXOR')
-rand_find_solution(xor_table, lim_max)
+rand_find_solution(xor_table, max_delay)
 print('\nAND')
-rand_find_solution(and_table, lim_max)
+rand_find_solution(and_table, max_delay)
 
 """
 print(d1, d2, d3)
