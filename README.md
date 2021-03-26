@@ -15,7 +15,7 @@ The reporters train on when their co-workers are most receptive. Should reporter
 
 The reporters and their king is like a building block. You can stack them deep. So a king provides news to another set of reporters deeper in the network that have their own king. When the network begins to taper down and end, you can have layers of kings that all independently decide when to make a decision once they have received a previous decision. 
 
-This means that through training: some kings will not have their decision heard and some kings will never make a decision in time. This emulates a bunch of brain cells deciding when to fire and what fires to attend/wait for.
+This means that through training: some kings will not have their decision heard and some kings will never make a decision in time. This emulates a bunch of brain cells deciding when to fire.
 
 # Projects Examples
 
