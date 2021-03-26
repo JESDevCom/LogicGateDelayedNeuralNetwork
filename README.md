@@ -9,13 +9,13 @@ The order of the groups never changes, but each group member gets to decide when
 
 The reporters train on when their co-workers are most receptive. Should reporter 1 of group 2 go before, after, or at the same time as reporter 3 of group 2 when presenting the news to the next group? Likewise, the king learns when to say he's had enough news for the day; thereby, producing his final decision(s) (output data). He might never hear the last reporter in group 2 and 3 before making his descision. 
 
-*THE TIME OF DAY MATTERS!* Thus, the delay plays a big role in the neural network. Hence why this project is called "Logic Gate Delayed Neural Networks."
+*TIMING MATTERS!* Thus, the delay of deciding when to present plays a big role in the neural network. Hence why this project is called "Logic Gate Delayed Neural Networks."
 
 **What about deep neural networks?**
 
-The reporters and their king is like a building block. You can stack them deep. So a king provides news to another set of reporters deeper in the network that have their own king. When the network begins to taper down and end, you can have layers of kings that all independtly decide when to make a decision once they have received a previous decision. 
+The reporters and their king is like a building block. You can stack them deep. So a king provides news to another set of reporters deeper in the network that have their own king. When the network begins to taper down and end, you can have layers of kings that all independently decide when to make a decision once they have received a previous decision. 
 
-This means that through training: some kings will not have their decision heard and some kings will never make a decision in time. 
+This means that through training: some kings will not have their decision heard and some kings will never make a decision in time. This emulates a bunch of brain cells deciding when to fire and what fires to attend/wait for.
 
 # Projects Examples
 
